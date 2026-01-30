@@ -8,10 +8,9 @@ namespace Test_Project5.Process
 {
     internal class Class5
     {
-        public void say_Hi()
+        public void run1()
         {
-            Console.WriteLine("Hi...");
-
+            Console.WriteLine("run1 is running..."); 
         }
     }
 }
