@@ -1,0 +1,152 @@
+<UserControl x:Class="EQX.FlowUILibraryWPF.MVVM.Views.FindCircleToolView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EQX.FlowUILibraryWPF.MVVM.Views"
+             xmlns:cvt="clr-namespace:EQX.FlowUILibraryWPF.Converters"
+             xmlns:resizableControls="clr-namespace:EQX.FlowUILibraryWPF.ResizableControls"
+             mc:Ignorable="d"
+             x:Name="root"
+             xmlns:controls="clr-namespace:EQX.FlowUILibraryWPF.Controls"
+             d:DesignHeight="450"
+             d:DesignWidth="1000">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="Width"
+                        Value="150" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+            </Style>
+            <Style TargetType="controls:NumericUpDown">
+                <Setter Property="ControlWidth" Value="240"/>
+                <Setter Property="ControlHeight" Value="30"/>
+            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/EQX.FlowUILibraryWPF;component/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="LightGray"
+                Grid.Column="0"
+                BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <TabControl>
+                    <TabItem Header="Parameters">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                            <controls:NumericUpDown Value="{Binding DataContext.Parameters[NumberOfCalipers],ElementName=root,Converter={StaticResource ObjectToDecimalConverter},Mode=TwoWay}"
+                                                        Description="Number of Caplipers"/>
+                            <controls:NumericUpDown Value="{Binding DataContext.Parameters[SearchLength],ElementName=root,Converter={StaticResource ObjectToDecimalConverter},Mode=TwoWay}"
+                                                        Description="Search Length"/>
+                            <GroupBox>
+                                <GroupBox.Header>
+                                    <TextBlock Text="Circle" FontWeight="Bold"/>
+                                </GroupBox.Header>
+                                <StackPanel Orientation="Vertical"
+                                            x:Name="parent"
+                                            DataContext="{Binding ExpectedCircle}">
+                                    <controls:NumericUpDown Value="{Binding DataContext.CenterX,ElementName=parent,Mode=TwoWay}"
+                                                            Description="CenterX"/>
+                                    <controls:NumericUpDown Value="{Binding DataContext.CenterY,ElementName=parent,Mode=TwoWay}"
+                                                            Description="CenterY"/>
+                                    <controls:NumericUpDown Value="{Binding DataContext.Radius,ElementName=parent,Mode=TwoWay}"
+                                                            Description="Radius"/>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Results">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Radius" />
+                                <TextBox Text="{Binding Outputs[Radius],Mode=OneWay}"
+                                         Width="150"
+                                         IsReadOnly="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Center" />
+                                <TextBox Text="{Binding Outputs[Center],Mode=OneWay}"
+                                         Width="150"
+                                         IsReadOnly="True" />
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+                <Label Content="{Binding Cost}"
+                       Grid.Row="1"
+                       HorizontalAlignment="Left" />
+            </Grid>
+        </Border>
+        <TabControl Grid.Column="1">
+            <TabItem Header="Input">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="9*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <ScrollViewer>
+                            <Grid>
+                                <Image Source="{Binding DataContext.Inputs[ImageMat],ElementName=root,Converter={StaticResource MatToBitmapSourceConverter}}"
+                                       Name="ImageDisplay"
+                                       MouseMove="ImageDisplay_MouseMove"
+                                       MouseWheel="ImageDisplay_MouseWheel"
+                                       SizeChanged="ImageDisplay_SizeChanged"
+                                       Loaded="ImageDisplay_Loaded" />
+                                <Canvas Width="{Binding ElementName=ImageDisplay, Path=ActualWidth}"
+                                        Height="{Binding ElementName=ImageDisplay, Path=ActualHeight}">
+                                    <Thumb DragDelta="Thumb_DragDelta"
+                                           DataContext="{Binding ExpectedCircle}"
+                                           Canvas.Left="{Binding Left}"
+                                           Canvas.Top="{Binding Top}">
+                                        <Thumb.Template>
+                                            <ControlTemplate>
+                                                <resizableControls:ResizableCircleControl ToolTip="Circle"
+                                                                                          ToolTipService.Placement="Top"
+                                                                                          ToolTipService.InitialShowDelay="10"/>
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Canvas>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                    <StackPanel Grid.Row="1"
+                                Orientation="Horizontal">
+                        <Label Content="X : "
+                               Width="30" />
+                        <Label Name="lblX"
+                               Width="50" />
+                        <Label Content=" || "
+                               Width="20" />
+                        <Label Content="Y : "
+                               Width="30" />
+                        <Label Name="lblY"
+                               Width="50" />
+                        <Label Content=" || "
+                               Width="20" />
+                        <Label Content="Color Value : "
+                               Width="100" />
+                        <Label Name="lblColorValue"
+                               Width="50" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Output">
+                <controls:ImageDisplayer ImageDisplay="{Binding DataContext.Outputs[ImageMat],ElementName=root}" />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
+

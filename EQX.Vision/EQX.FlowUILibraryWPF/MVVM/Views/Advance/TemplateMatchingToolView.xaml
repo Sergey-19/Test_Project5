@@ -1,0 +1,204 @@
+<UserControl x:Class="EQX.FlowUILibraryWPF.MVVM.Views.TemplateMatchingToolView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EQX.FlowUILibraryWPF.MVVM.Views"
+             xmlns:cvt="clr-namespace:EQX.FlowUILibraryWPF.Converters"
+             xmlns:controls="clr-namespace:EQX.FlowUILibraryWPF.Controls"
+             xmlns:resizableControls="clr-namespace:EQX.FlowUILibraryWPF.ResizableControls"
+             mc:Ignorable="d"
+             x:Name="root"
+             d:DesignHeight="700"
+             d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="Width"
+                        Value="100" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+            </Style>
+            <Style TargetType="controls:NumericUpDown">
+                <Setter Property="ControlWidth" Value="240"/>
+                <Setter Property="ControlHeight" Value="30"/>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Border BorderBrush="LightGray"
+                    Grid.Column="0"
+                    BorderThickness="1">
+                <ScrollViewer>
+                    <TabControl>
+                        <TabItem Header="Parameters">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Template"
+                                           FontWeight="Bold"
+                                           Width="auto" />
+                                    <CheckBox IsChecked="{Binding IsSettingTemplate}"
+                                              VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <UniformGrid Rows="4" Columns="1">
+                                        <controls:NumericUpDown Value="{Binding DataContext.RectangleTemplate.X,ElementName=root,Converter={StaticResource ObjectToDecimalConverter},Mode=TwoWay}"
+                                                                Description="X"/>
+                                        <controls:NumericUpDown Value="{Binding DataContext.RectangleTemplate.Y,ElementName=root,Converter={StaticResource ObjectToDecimalConverter},Mode=TwoWay}"
+                                                                Description="Y"/>
+                                        <controls:NumericUpDown Value="{Binding DataContext.RectangleTemplate.Width,ElementName=root,Converter={StaticResource ObjectToDecimalConverter},Mode=TwoWay}"
+                                                                Description="Width"/>
+                                        <controls:NumericUpDown Value="{Binding DataContext.RectangleTemplate.Height,ElementName=root,Converter={StaticResource ObjectToDecimalConverter},Mode=TwoWay}"
+                                                                Description="Height"/>
+                                    </UniformGrid>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Center">
+                                    <Button Content="Set Template Image"
+                                            Style="{StaticResource ButtonWithCornerStyle}"
+                                            HorizontalAlignment="Center"
+                                            Margin="0 10 0 0"
+                                            Click="SetTemplateButton_Click" />
+                                    <Button Content="Load Template Image"
+                                            Style="{StaticResource ButtonWithCornerStyle}"
+                                            HorizontalAlignment="Center"
+                                            Margin="0 10 0 0"
+                                            Click="LoadTemplateButton_Click"/>
+                                    <Button Content="Save Template Image"
+                                            Style="{StaticResource ButtonWithCornerStyle}"
+                                            HorizontalAlignment="Center"
+                                            Margin="0 10 0 0"
+                                            Click="SaveTemplateButton_Click"/>
+                                </StackPanel>
+                                <Label Content="TemplateImage"
+                                       FontWeight="Bold"
+                                       Margin="40 5 0 0" />
+                                <Border BorderBrush="LightGray"
+                                        BorderThickness="1"
+                                        Width="300"
+                                        Height="250">
+                                    <Image Source="{Binding TemplateMat,Converter={StaticResource MatToBitmapSourceConverter}}" />
+                                </Border>
+                                <StackPanel  Orientation="Horizontal">
+                                    <Label Content="Use Detect Template Rotation"
+                                           FontWeight="Bold"
+                                           Width="auto" />
+                                    <CheckBox IsChecked="{Binding Parameters[IsUseDetectTemplateRotation]}"
+                                              VerticalAlignment="Center" />
+                                </StackPanel>
+                                <UniformGrid Rows="3"
+                                             Columns="1"
+                                             Visibility="{Binding Parameters[IsUseDetectTemplateRotation], Converter={StaticResource BoolToVisibilityConverter}}"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left">
+                                    <controls:NumericUpDown Value="{Binding DataContext.Parameters[AngleStart],ElementName=root,Converter={StaticResource ObjectToDecimalConverter},Mode=TwoWay}"
+                                                            Description="Angle Start"/>
+                                    <controls:NumericUpDown Value="{Binding DataContext.Parameters[AngleEnd],ElementName=root,Converter={StaticResource ObjectToDecimalConverter},Mode=TwoWay}"
+                                                            Description="Angle End"/>
+                                    <controls:NumericUpDown Value="{Binding DataContext.Parameters[AngleStep],ElementName=root,Converter={StaticResource ObjectToDecimalConverter},Mode=TwoWay}"
+                                                            Description="Angle Step"/>
+                                </UniformGrid>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Results">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Match Score" />
+                                    <TextBox Text="{Binding MatchScore,Mode=OneWay}"
+                                             IsReadOnly="True"
+                                             Width="140" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Location X" />
+                                    <TextBox Text="{Binding Outputs[LocationX],Mode=OneWay}"
+                                             IsReadOnly="True"
+                                             Width="140" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Location Y" />
+                                    <TextBox Text="{Binding Outputs[LocationY],Mode=OneWay}"
+                                             IsReadOnly="True"
+                                             Width="140" />
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+                    </TabControl>
+                </ScrollViewer>
+            </Border>
+            <Label Content="{Binding Cost}"
+                   Grid.Row="1"
+                   HorizontalAlignment="Left" />
+        </Grid>
+        <TabControl Grid.Column="1">
+            <TabItem Header="Input">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="9*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <ScrollViewer>
+                            <Grid>
+                                <Image Source="{Binding DataContext.Inputs[ImageMat],ElementName=root,Converter={StaticResource MatToBitmapSourceConverter}}"
+                                       Name="ImageDisplay"
+                                       Loaded="ImageDisplay_Loaded"
+                                       SizeChanged="ImageDisplay_SizeChanged"
+                                       MouseMove="ImageDisplay_MouseMove"
+                                       MouseWheel="ImageDisplay_MouseWheel" />
+                                <Canvas Width="{Binding ElementName=ImageDisplay,Path=ActualWidth}"
+                                        Height="{Binding ElementName=ImageDisplay,Path=ActualHeight}"
+                                        Visibility="{Binding IsVisibleRectangleTemplate, Converter={StaticResource BoolToVisibilityConverter}}">
+                                    <Thumb Canvas.Left="{Binding DataContext.RectangleTemplate.XUI,ElementName=root}"
+                                           Canvas.Top="{Binding DataContext.RectangleTemplate.YUI,ElementName=root}"
+                                           DataContext="{Binding RectangleTemplate}"
+                                           DragDelta="Thumb_DragDelta">
+                                        <Thumb.Template>
+                                            <ControlTemplate>
+                                                <resizableControls:ResizableRectangleControl ToolTip="Template"
+                                                                                             BorderBrush="Green"/>
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Canvas>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                    <StackPanel Grid.Row="1"
+                                Orientation="Horizontal">
+                        <Label Content="X : "
+                               Width="30" />
+                        <Label Name="lblX"
+                               Width="50" />
+                        <Label Content=" | "
+                               Width="20" />
+                        <Label Content="Y : "
+                               Width="30" />
+                        <Label Name="lblY"
+                               Width="50" />
+                        <Label Content=" | "
+                               Width="20" />
+                        <Label Content="Color Value : "
+                               Width="100" />
+                        <Label Name="lblColorValue"
+                               Width="50" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Output">
+                <controls:ImageDisplayer ImageDisplay="{Binding DataContext.Outputs[ImageMat],ElementName=root}" />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
+

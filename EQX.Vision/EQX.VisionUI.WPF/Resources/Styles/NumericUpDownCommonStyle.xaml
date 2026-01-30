@@ -1,0 +1,19 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:EQX.VisionUI.WPF.Controls">
+    <Style TargetType="controls:NumericUpDown">
+        <Setter Property="LabelDescriptionWidth"
+                Value="150" />
+        <Setter Property="ControlHeight"
+                Value="30" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="TextBoxValueWidth"
+                Value="150"/>
+        <Setter Property="ButtonWidth"
+                Value="30"/>
+        <Setter Property="Margin"
+                Value="0 2 0 2"/>
+    </Style>
+
+</ResourceDictionary>

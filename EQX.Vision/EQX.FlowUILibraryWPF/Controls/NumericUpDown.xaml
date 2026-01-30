@@ -1,0 +1,42 @@
+<UserControl x:Class="EQX.FlowUILibraryWPF.Controls.NumericUpDown"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EQX.FlowUILibraryWPF.Controls"
+             mc:Ignorable="d">
+    <StackPanel Width="{Binding ControlWidth, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                Height="{Binding ControlHeight, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                Orientation="Horizontal">
+        <Label Content="{Binding Description}" 
+               Width="{Binding WidthLabelDescription}"/>
+        <TextBox x:Name="txtNum"
+                 Text="{Binding Value, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                 Grid.Column="0"
+                 Width="{Binding WidthTxtBox}"
+                 Height="{Binding ControlHeight,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                 HorizontalAlignment="Right"
+                 VerticalContentAlignment="Center"
+                 VerticalAlignment="Center" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button x:Name="cmdUp"
+                    Content="?"
+                    VerticalContentAlignment="Center"
+                    Width="{Binding WidthButton}"
+                    Click="CmdUp_Click"
+                    Grid.Row="0"
+                    FontSize="{Binding FontSizeButton}"/>
+            <Button x:Name="cmdDown"
+                    Content="?"
+                    VerticalContentAlignment="Center"
+                    Width="{Binding WidthButton}"
+                    Click="CmdDown_Click"
+                    Grid.Row="1"
+                    FontSize="{Binding FontSizeButton}"/>
+        </Grid>
+    </StackPanel>
+</UserControl>

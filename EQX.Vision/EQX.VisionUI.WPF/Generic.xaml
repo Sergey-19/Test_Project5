@@ -1,0 +1,64 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:visionTools="clr-namespace:EQX.Vision.Algorithms;assembly=EQX.Vision"
+                    xmlns:controls="clr-namespace:EQX.VisionUI.WPF.Controls"
+                    xmlns:vm="clr-namespace:EQX.VisionUI.WPF.MVVM.ViewModels"
+                    xmlns:views="clr-namespace:EQX.VisionUI.WPF.MVVM.Views"
+                    xmlns:parameterEditViews ="clr-namespace:EQX.VisionUI.WPF.MVVM.Views.VisionToolEditParameterViews"
+                    xmlns:cvt="clr-namespace:EQX.VisionUI.WPF.Converters"
+                    xmlns:validations="clr-namespace:EQX.VisionUI.WPF.Validations">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Adorners/CircleBorderThumbStyle.xaml" />
+        <ResourceDictionary Source="Adorners/RectangleBorderThumbStyle.xaml" />
+        <ResourceDictionary Source="Adorners/LineBorderThumbStyle.xaml" />
+
+
+        <ResourceDictionary Source="Resources/Styles/NumericUpDownCommonStyle.xaml" />
+        <ResourceDictionary Source="/EQX.UI;component/Generic.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+    <cvt:IdToPositionXConverter x:Key="IdToPositionXConverter"/>
+    <cvt:IdToPositionYConverter x:Key="IdToPositionYConverter"/>
+    <cvt:MatToBitmapSourceConverter x:Key="MatToBitmapSourceConverter"/>
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+    <validations:NumberUpDownValidationRule x:Key="IntergerValidationRule" AllowDecimal="False"/>
+    <validations:NumberUpDownValidationRule x:Key="DoubleValidationRule" AllowDecimal="True"/>
+    <DataTemplate DataType="{x:Type vm:VisionTeachingViewModel}">
+        <views:VisionTeachingView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type visionTools:VisionToolBase}">
+        <controls:VisionToolDragModeView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type visionTools:AdaptiveThresholdTool}">
+        <parameterEditViews:AdaptiveThresholdToolEditParameterView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type visionTools:SmoothingTool}">
+        <parameterEditViews:SmoothingToolEditParameterView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type visionTools:ThresholdTool}">
+        <parameterEditViews:ThresholdToolEditParameterView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type visionTools:FindCircleTool}">
+        <parameterEditViews:FindCircleToolEditParameterView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type visionTools:HoughCircleTool}">
+        <parameterEditViews:HoughCircleToolEditParameterView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type visionTools:LineDetectionTool}">
+        <parameterEditViews:LineDetectionToolEditParameterView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type visionTools:AlignTwoLinesTool}">
+        <parameterEditViews:AlignTwoLinesToolEditParameterView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type visionTools:GrabTool}">
+        <parameterEditViews:GrabToolEditParameterView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type visionTools:OutputTool}">
+        <parameterEditViews:OutputToolEditParameterView />
+    </DataTemplate>
+</ResourceDictionary>

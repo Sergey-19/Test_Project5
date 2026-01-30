@@ -1,0 +1,144 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary>
+            <system:String x:Key="str_Hello">?????</system:String>
+            <system:String x:Key="str_Log">??</system:String>
+            <system:String x:Key="str_GlassAlignVision">?? ?? ??</system:String>
+            <system:String x:Key="str_ProductInformation">?? ??</system:String>
+            <system:String x:Key="str_Operation">??</system:String>
+            <system:String x:Key="str_Auto">??</system:String>
+            <system:String x:Key="str_Login">???</system:String>
+            <system:String x:Key="str_Manual">??</system:String>
+            <system:String x:Key="str_Data">???</system:String>
+            <system:String x:Key="str_Teach">??</system:String>
+            <system:String x:Key="str_Vision">??</system:String>
+            <system:String x:Key="str_Origin">??</system:String>
+            <system:String x:Key="str_Start">??</system:String>
+            <system:String x:Key="str_Ready">??</system:String>
+            <system:String x:Key="str_Stop">??</system:String>
+            <system:String x:Key="str_ResetAlarmBeforeRun">??? ???? ?? ???? ??? ? ??????</system:String>
+            <system:String x:Key="str_Confirm">????</system:String>
+            <system:String x:Key="str_TurnOnAllMotionsFirst">?? ??? ?? ???</system:String>
+            <system:String x:Key="str_ListTool">?? ??</system:String>
+            <system:String x:Key="str_Run">??</system:String>
+            <system:String x:Key="str_Save">??</system:String>
+            <system:String x:Key="str_Load">????</system:String>
+            <system:String x:Key="str_Refresh">?? ??</system:String>
+            <system:String x:Key="str_Select">??</system:String>
+            <system:String x:Key="str_Language">??</system:String>
+            <system:String x:Key="str_Copy">??</system:String>
+            <system:String x:Key="str_Options">??</system:String>
+            <system:String x:Key="str_Logout">????</system:String>
+            <system:String x:Key="str_Dev">??</system:String>
+            <system:String x:Key="str_Cancel">??</system:String>
+            <system:String x:Key="str_SaveImage">??? ??</system:String>
+            <system:String x:Key="str_AreYouSureYouWantToCloseApplication">?? ????? ?????????</system:String>
+            <system:String x:Key="str_AreYouSureYouWantToSetMachineOrigin">??? ???? ?????????</system:String>
+            <system:String x:Key="str_AreYouSureYouWantToSetMachineReady">??? ?? ??? ?????????</system:String>
+            <system:String x:Key="str_AreYouSureYouWantToStartMachine">??? ?????????</system:String>
+            <system:String x:Key="str_AreYouSureYouWantToStartMachineDryRun">???? ??? ??? ????????? ?? ?? ?? ??? ?????.</system:String>
+            <system:String x:Key="str_AreYouSureYouWantToStartMachineByPass">???? ??? ??? ????????? ? ? ?? ??? ?????.</system:String>
+            <system:String x:Key="str_VisionRecipeSaveSuccessed">?? ??? ??? ??????!</system:String>
+            <system:String x:Key="str_SaveAllData">?? ???? ??????!</system:String>
+            <system:String x:Key="str_MachineInitializeFinishWithError">?? ???? ??? ???????. ??? ??? ??? ??????!</system:String>
+            <system:String x:Key="str_WrongPassword">??? ????</system:String>
+            <system:String x:Key="str_MoveTo">??</system:String>
+            <system:String x:Key="str_CopyRecipe">??? ??</system:String>
+            <system:String x:Key="str_ReloadAllData">?? ???? ?? ??????</system:String>
+            <system:String x:Key="str_ChangeModel">?? ??</system:String>
+            <system:String x:Key="str_ResetWorkData">?? ???? ??????????</system:String>
+            <system:String x:Key="str_MachineNeedToBeInitializationBeforeRun">??? ???? ?? ???(??)? ?????</system:String>
+            <system:String x:Key="str_MachineNeedToBeOriginBeforeRun">??? ???? ?? ??? ?????</system:String>
+            <system:String x:Key="str_MachineNeedToBeReadyBeforeRun">??? ???? ?? ?? ??? ?????</system:String>
+            <system:String x:Key="str_RecipeChangeDoYoWantToSave">???? ???????. ?????????</system:String>
+            <system:String x:Key="str_OriginSuccess">?? ??!</system:String>
+            <system:String x:Key="str_RobotMayNotInOriginPosition">??? ?? ??? ?? ????</system:String>
+            <system:String x:Key="str_RobotMoveToOriginPositionDone">??? ?? ??? ??????</system:String>
+            <system:String x:Key="str_ReadyToChange">??? ??? ?????</system:String>
+            
+            
+            <system:String x:Key="str_Motion">??</system:String>
+            <system:String x:Key="str_Cylinder">???</system:String>
+            <system:String x:Key="str_RobotVacuum">?? ??</system:String>
+            <system:String x:Key="str_InnerLight">?? ??</system:String>
+            <system:String x:Key="str_CameraConnect">??? ??</system:String>
+            <system:String x:Key="str_RobotConnect">?? ??</system:String>
+            <system:String x:Key="str_MotionConnect">?? ??</system:String>
+            <system:String x:Key="str_IOConnect">I/O ??</system:String>
+            <system:String x:Key="str_Connect">??</system:String>
+            <system:String x:Key="str_Disconnect">?? ??</system:String>
+
+            <system:String x:Key="str_Forward">??</system:String>
+            <system:String x:Key="str_Backward">??</system:String>
+            <system:String x:Key="str_Up">??</system:String>
+            <system:String x:Key="str_Down">???</system:String>
+            <system:String x:Key="str_Right">???</system:String>
+            <system:String x:Key="str_Left">??</system:String>
+            <system:String x:Key="str_Grip">??</system:String>
+            <system:String x:Key="str_Ungrip">??</system:String>
+            <system:String x:Key="str_Align">??</system:String>
+            <system:String x:Key="str_Unalign">???</system:String>
+            <system:String x:Key="str_Lock">??</system:String>
+            <system:String x:Key="str_Unlock">?? ??</system:String>
+
+            <system:String x:Key="str_Reset">??</system:String>
+            <system:String x:Key="str_DoorDetected">?? ???</system:String>
+            <system:String x:Key="str_DoorNotDetected">?? ?? ? ?</system:String>
+            <system:String x:Key="str_DoorLock">?? ??</system:String>
+            <system:String x:Key="str_DoorUnlock">?? ?? ??</system:String>
+            <system:String x:Key="str_SliderDetected">???? ???</system:String>
+            <system:String x:Key="str_SliderNotDetected">???? ?? ? ?</system:String>
+            <system:String x:Key="str_SliderLock">???? ??</system:String>
+            <system:String x:Key="str_SliderUnlock">???? ?? ??</system:String>
+            <system:String x:Key="str_VacuumOn">?? ??</system:String>
+            <system:String x:Key="str_VacuumOff">?? ??</system:String>
+            <system:String x:Key="str_LightOn">?? ??</system:String>
+            <system:String x:Key="str_LightOff">?? ??</system:String>
+            <system:String x:Key="str_ServoOn">?? ??</system:String>
+            <system:String x:Key="str_ServoOff">?? ??</system:String>
+            <system:String x:Key="str_AlarmReset">?? ??</system:String>
+
+            <system:String x:Key="str_SuperSlow">?? ??</system:String>
+            <system:String x:Key="str_Slow">??</system:String>
+            <system:String x:Key="str_Medium">??</system:String>
+            <system:String x:Key="str_High">??</system:String>
+
+            <system:String x:Key="str_Total">??</system:String>
+            <system:String x:Key="str_CycleCurrent">?? ???</system:String>
+            <system:String x:Key="str_EMPTY">?? ??</system:String>
+            <system:String x:Key="str_EXIST">???</system:String>
+            <system:String x:Key="str_UserGroup">??? ??</system:String>
+            <system:String x:Key="str_Password">????</system:String>
+
+            <system:String x:Key="str_ModelList">?? ??</system:String>
+            <system:String x:Key="str_Index">???</system:String>
+            <system:String x:Key="str_Description">??</system:String>
+            <system:String x:Key="str_Detail">?? ??</system:String>
+            <system:String x:Key="str_Value">?</system:String>
+
+            <system:String x:Key="str_Old">??</system:String>
+            <system:String x:Key="str_Minimum">??</system:String>
+            <system:String x:Key="str_Maximum">??</system:String>
+            <system:String x:Key="str_NewValue">? ?</system:String>
+            <system:String x:Key="str_Current">??</system:String>
+            <system:String x:Key="str_Clear">???</system:String>
+            <system:String x:Key="str_Apply">??</system:String>
+            <system:String x:Key="str_Close">??</system:String>
+
+            <system:String x:Key="str_Parameters">????</system:String>
+            <system:String x:Key="str_Results">??</system:String>
+            <system:String x:Key="str_Input">??</system:String>
+            <system:String x:Key="str_Output">??</system:String>
+
+            <system:String x:Key="str_Flip">???</system:String>
+            <system:String x:Key="str_Unflip">??? ??</system:String>
+
+            <system:String x:Key="str_Clamp">???</system:String>
+            <system:String x:Key="str_Unclamp">????</system:String>
+            <system:String x:Key="str_On">??</system:String>
+            <system:String x:Key="str_Off">??</system:String>
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

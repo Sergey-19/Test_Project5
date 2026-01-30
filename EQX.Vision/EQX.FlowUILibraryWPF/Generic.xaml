@@ -1,0 +1,72 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:flowUIWPFViews="clr-namespace:EQX.FlowUILibraryWPF.MVVM.Views"
+                    xmlns:flowUIWPFViewModels="clr-namespace:EQX.FlowUILibraryWPF.MVVM.ViewModels"
+                    xmlns:flowUIWPFModels="clr-namespace:EQX.FlowUILibraryWPF.Models"
+                    xmlns:tool="clr-namespace:EQX.Vision.Tool;assembly=EQX.Vision"
+                    xmlns:cvt="clr-namespace:EQX.FlowUILibraryWPF.Converters"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/EQX.FlowUILibraryWPF;component/Styles/ButtonWithCornerStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <cvt:MatToBitmapSourceConverter x:Key="MatToBitmapSourceConverter" />
+    <cvt:ObjectToDecimalConverter x:Key="ObjectToDecimalConverter" />
+    <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+    <DataTemplate DataType="{x:Type flowUIWPFViewModels:ToolViewModel}">
+        <flowUIWPFViews:ToolView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type flowUIWPFViewModels:FlowViewModel}">
+        <flowUIWPFViews:FlowView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type flowUIWPFViewModels:ToolListViewModel}">
+        <flowUIWPFViews:ToolListView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type flowUIWPFViewModels:MainFlowToolViewModel}">
+        <flowUIWPFViews:MainFlowToolView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type flowUIWPFViewModels:RibbonViewModel}">
+        <flowUIWPFViews:RibbonView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type flowUIWPFModels:ConnectionData}">
+        <flowUIWPFViews:ConnectionPathView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tool:AdaptiveThresholdTool}">
+        <flowUIWPFViews:AdaptiveThresholdToolView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tool:BitwiseTool}">
+        <flowUIWPFViews:BitwiseToolView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tool:ConvertColorTool}">
+        <flowUIWPFViews:ConvertColorToolView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tool:InRangeTool}">
+        <flowUIWPFViews:InRangeToolView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tool:SmoothingTool}">
+        <flowUIWPFViews:SmoothingToolView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tool:ThresholdTool}">
+        <flowUIWPFViews:ThresholdToolView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tool:CreateCircleTool}">
+        <flowUIWPFViews:CreateCircleToolView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tool:FindCircleTool}">
+        <flowUIWPFViews:FindCircleToolView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tool:HoughCircleTool}">
+        <flowUIWPFViews:HoughCircleToolView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tool:TemplateMatchingTool}">
+        <flowUIWPFViews:TemplateMatchingToolView />
+    </DataTemplate>
+
+
+</ResourceDictionary>

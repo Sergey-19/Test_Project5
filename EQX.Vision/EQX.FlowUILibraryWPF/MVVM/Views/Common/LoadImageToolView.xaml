@@ -1,0 +1,74 @@
+<UserControl x:Class="EQX.FlowUILibraryWPF.MVVM.Views.LoadImageToolView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EQX.FlowUILibraryWPF.MVVM.Views"
+             mc:Ignorable="d"
+             x:Name="root"
+             xmlns:uc="clr-namespace:EQX.FlowUILibraryWPF.Controls"
+             d:DesignHeight="450" d:DesignWidth="1300">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Width"
+                    Value="150" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+        </Style>
+        <Style TargetType="ToolTip">
+            <Setter Property="Foreground"
+                    Value="Red" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="LightGray"
+                BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TabControl>
+                    <TabItem Header="Parameters">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Image Path" />
+                                <TextBox Text="{Binding Parameters[ImagePath]}"
+                                     Width="400"
+                                     FontSize="11.5" />
+                                <Button Content="..."
+                                        Width="30"
+                                        Click="LoadImageButton_Click"
+                                        HorizontalContentAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Read Mode" />
+                                <ComboBox ItemsSource="{Binding ReadModeList}"
+                                      Width="400"
+                                      SelectedItem="{Binding Parameters[ReadMode],Mode=TwoWay}">
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Results">
+                        <StackPanel Orientation="Vertical">
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+                <Label Grid.Row="1"
+                               Content="{Binding Cost}"
+                               HorizontalAlignment="Left"/>
+            </Grid>
+
+        </Border>
+        <TabControl Grid.Column="1">
+            <TabItem Header="Output">
+                <uc:ImageDisplayer ImageDisplay="{Binding DataContext.Outputs[ImageMat],ElementName=root}" />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

@@ -1,0 +1,51 @@
+<Window x:Class="EQX.Vision.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EQX.Vision.App"
+        mc:Ignorable="d"
+        x:Name="root"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        d:DataContext="{d:DesignInstance Type={x:Type local:MainViewModel}}"
+        Title="MainWindow"
+        Loaded="root_Loaded"
+        WindowStartupLocation="CenterScreen"
+        Height="1000"
+        Width="1920">
+    <TabControl>
+        <TabItem>
+            <Grid>
+                <ContentControl Grid.Row="2"
+                                Content="{Binding VisionTeachingVM}" />
+            </Grid>
+        </TabItem>
+        <!--<TabItem Header="Test HIK Camera">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image Source="{Binding Image,Converter={StaticResource MatToBitmapSourceConverter}}" />
+                <Button Content="Grab"
+                        Grid.Row="1"
+                        Command="{Binding GrabCommand}" />
+                <StackPanel Grid.Row="1"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Button Content="Grab"
+                            Command="{Binding GrabCommand}" />
+                    <Button Content="Continus Grab"
+                            Command="{Binding ContinuousCommand}" />
+                    <Button Content="Stop Continus Grab"
+                            Command="{Binding StopContinuousCommand}" />
+                    <Button Content="Disconnect"
+                            Command="{Binding DisconnectCommand}" />
+                    <Button Content="Connect"
+                            Command="{Binding ConnectCommand}" />
+                </StackPanel>
+            </Grid>
+        </TabItem>-->
+    </TabControl>
+
+</Window>

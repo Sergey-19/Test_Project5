@@ -1,0 +1,15 @@
+<Application x:Class="EQX.Vision.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:EQX.Vision.App"
+             xmlns:cvt="clr-namespace:EQX.Vision.App.Converters">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/EQX.VisionUI.WPF;component/Generic.xaml"/>
+                <ResourceDictionary Source="/EQX.UI;component/Resources/Themes/UTITheme.xaml" />
+                <ResourceDictionary Source="/EQX.UI;component/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

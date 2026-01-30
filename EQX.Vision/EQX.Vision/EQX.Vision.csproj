@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<Nullable>enable</Nullable>
+		<Configurations>Debug;Release;Simulation</Configurations>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Platforms>AnyCPU;x64</Platforms>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\EQX.Core\EQX.Core\EQX.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="..\Resources\dll\$(Platform)\*">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="11.2.2" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="OpenCvSharp4" Version="4.10.0.20241108" />
+		<PackageReference Include="System.Drawing.Common" Version="8.0.11" />
+		<PackageReference Include="System.IO.Ports" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="MvCamCtrl.Net" Condition="$(Platform)=='AnyCPU'">
+	    <HintPath>..\..\EQX.ThirdParty\Dll\HIKVision\AnyCpu\MvCamCtrl.Net.dll</HintPath>
+	  </Reference>
+	  <Reference Include="MvCameraControl.Net" Condition="$(Platform)=='AnyCPU'">
+	    <HintPath>..\..\EQX.ThirdParty\Dll\HIKVision\AnyCpu\MvCameraControl.Net.dll</HintPath>
+	  </Reference>
+
+    <Reference Include="MvCamCtrl.Net" Condition="$(Platform)=='x86'">
+      <HintPath>..\..\EQX.ThirdParty\Dll\HIKVision\x86\MvCamCtrl.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MvCameraControl.Net" Condition="$(Platform)=='x86'">
+      <HintPath>..\..\EQX.ThirdParty\Dll\HIKVision\x86\MvCameraControl.Net.dll</HintPath>
+    </Reference>
+
+    <Reference Include="MvCamCtrl.Net" Condition="$(Platform)=='x64'">
+      <HintPath>..\..\EQX.ThirdParty\Dll\HIKVision\x64\MvCamCtrl.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MvCameraControl.Net" Condition="$(Platform)=='x64'">
+      <HintPath>..\..\EQX.ThirdParty\Dll\HIKVision\x64\MvCameraControl.Net.dll</HintPath>
+    </Reference>
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,144 @@
+<UserControl x:Class="EQX.FlowUILibraryWPF.MVVM.Views.ToolListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EQX.FlowUILibraryWPF.MVVM.Views"
+             mc:Ignorable="d"
+             xmlns:vm="clr-namespace:EQX.FlowUILibraryWPF.MVVM.ViewModels"
+             d:DataContext="{d:DesignInstance Type={x:Type vm:ToolListViewModel}}"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <!-- Button Style -->
+        <Style TargetType="Button">
+            <Setter Property="Margin"
+                    Value="3" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="Padding"
+                    Value="8,4" />
+            <Setter Property="Background"
+                    Value="#F6F8FA" />
+            <Setter Property="Foreground"
+                    Value="#24292E" />
+            <Setter Property="FontWeight"
+                    Value="Normal" />
+            <Setter Property="BorderBrush"
+                    Value="#E1E4E8" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+            <Setter Property="Command"
+                    Value="{Binding AddToolCommand}" />
+            <Setter Property="CommandParameter"
+                    Value="{Binding RelativeSource={RelativeSource Mode=Self}}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#E1E4E8" />
+                            </Trigger>
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#D1D5DA" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Expander Style -->
+        <Style TargetType="Expander">
+            <Setter Property="IsExpanded"
+                    Value="True" />
+            <Setter Property="Margin"
+                    Value="8" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Expander">
+                        <Border Background="#F6F8FA"
+                                BorderThickness="1"
+                                BorderBrush="#E1E4E8"
+                                CornerRadius="3">
+                            <StackPanel>
+                                <ToggleButton x:Name="HeaderSite"
+                                              Content="{TemplateBinding Header}"
+                                              Background="#F6F8FA"
+                                              Foreground="#0366D6"
+                                              FontWeight="Bold"
+                                              BorderBrush="Transparent"
+                                              BorderThickness="0"
+                                              Cursor="Hand"
+                                              Padding="8,4"
+                                              IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <ContentPresenter x:Name="ExpandSite"
+                                                  Visibility="Collapsed" />
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsExpanded"
+                                     Value="True">
+                                <Setter TargetName="ExpandSite"
+                                        Property="Visibility"
+                                        Value="Visible" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical">
+            <Expander Header="Common">
+                <StackPanel Orientation="Vertical">
+                    <Button Content="LoadImage" />
+                    <Button Content="ConvertColor" />
+                </StackPanel>
+            </Expander>
+            <Expander Header="PreProcessing">
+                <StackPanel Orientation="Vertical">
+                    <Button Content="Bitwise" />
+                    <Button Content="Threshold" />
+                    <Button Content="AdaptiveThreshold" />
+                    <Button Content="InRange" />
+                    <Button Content="Smoothing" />
+                </StackPanel>
+            </Expander>
+
+            <Expander Header="Finding">
+                <StackPanel Orientation="Vertical">
+                    <Button Content="HoughCircle" />
+                    <Button Content="FindCircle" />
+                </StackPanel>
+            </Expander>
+            <Expander Header="Advance">
+                <StackPanel Orientation="Vertical">
+                    <Button Content="TemplateMatching" />
+                </StackPanel>
+            </Expander>
+            <Expander Header="Creation">
+                <StackPanel Orientation="Vertical">
+                    <Button Content="CreateCircle" />
+                </StackPanel>
+            </Expander>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

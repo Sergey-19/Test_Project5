@@ -1,0 +1,64 @@
+<UserControl x:Class="EQX.FlowUILibraryWPF.MVVM.Views.SmoothingToolView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EQX.FlowUILibraryWPF.MVVM.Views"
+             mc:Ignorable="d" 
+             x:Name="root"
+             xmlns:controls="clr-namespace:EQX.FlowUILibraryWPF.Controls"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Width"
+                    Value="150" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+        </Style>
+        <Style TargetType="controls:NumericUpDown">
+            <Setter Property="ControlWidth" Value="240"/>
+            <Setter Property="ControlHeight" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="LightGray"
+                BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TabControl>
+                    <TabItem Header="Parameters">
+                        <StackPanel Orientation="Vertical">
+                            <controls:NumericUpDown Value="{Binding DataContext.Parameters[Width],ElementName=root,Converter={StaticResource ObjectToDecimalConverter},Mode=TwoWay}"
+                                                    Description="Width"/>
+
+                            <controls:NumericUpDown Value="{Binding DataContext.Parameters[Height],ElementName=root,Converter={StaticResource ObjectToDecimalConverter},Mode=TwoWay}"
+                                                    Description="Height"/>
+
+                            <controls:NumericUpDown Value="{Binding DataContext.Parameters[SigmaX],ElementName=root,Converter={StaticResource ObjectToDecimalConverter},Mode=TwoWay}"
+                                                    Description="SigmaX"/>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Border>
+        <TabControl Grid.Column="1">
+            <TabItem Header="Input">
+                <controls:ImageDisplayer ImageDisplay="{Binding DataContext.Inputs[ImageMat],ElementName=root}" />
+            </TabItem>
+            <TabItem Header="Output">
+                <controls:ImageDisplayer ImageDisplay="{Binding DataContext.Outputs[ImageMat],ElementName=root}" />
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+</UserControl>
